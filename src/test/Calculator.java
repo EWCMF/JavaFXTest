@@ -27,11 +27,13 @@ public class Calculator extends Application {
         TextField textField2 = new TextField();
 
         Label label3 = new Label("Result here");
+        label3.setStyle("-fx-padding: 10 0 0 0; -fx-font-size: 16pt;");
         AtomicInteger calc = new AtomicInteger();
         AtomicInteger chosen = new AtomicInteger();
 
         chosen.set(1);
-        Label labelChosen = new Label("Addition");
+        Label labelChosen = new Label("Addition is chosen.");
+        labelChosen.setStyle("-fx-padding: 20 0 20 0; -fx-font-size: 16pt;");
 
         Button add = new Button("Add");
         add.setOnAction(actionEvent -> {
@@ -89,7 +91,7 @@ public class Calculator extends Application {
         VBox vBox = new VBox(hbox, labelChosen, label1, textField1, label2, textField2, button, label3);
 
 
-        Scene scene = new Scene(vBox, 400, 200);
+        Scene scene = new Scene(vBox, 400, 250);
         primaryStage.setScene(scene);
 
         primaryStage.show();
