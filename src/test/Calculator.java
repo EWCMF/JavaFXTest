@@ -23,6 +23,7 @@ public class Calculator extends Application {
         TextField textField1 = new TextField();
 
         Label label2 = new Label("Second number");
+        label2.setStyle("-fx-padding: 10 0 0 0;");
 
         TextField textField2 = new TextField();
 
@@ -33,7 +34,7 @@ public class Calculator extends Application {
 
         chosen.set(1);
         Label labelChosen = new Label("Addition is chosen.");
-        labelChosen.setStyle("-fx-padding: 20 0 20 0; -fx-font-size: 16pt;");
+        labelChosen.setStyle("-fx-padding: 20 0 10 0; -fx-font-size: 16pt;");
 
         Button add = new Button("Add");
         add.setOnAction(actionEvent -> {
