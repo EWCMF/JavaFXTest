@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 public class Calculator extends Application {
@@ -29,7 +30,7 @@ public class Calculator extends Application {
 
         Label label3 = new Label("Result here");
         label3.setStyle("-fx-padding: 10 0 0 0; -fx-font-size: 16pt;");
-        AtomicInteger calc = new AtomicInteger();
+        AtomicReference<Double> calc = new AtomicReference<>();
         AtomicInteger chosen = new AtomicInteger();
 
         chosen.set(1);
@@ -65,20 +66,40 @@ public class Calculator extends Application {
             if (isNumeric(textField1.getText()) && isNumeric(textField2.getText())) {
                 switch (chosen.get()) {
                     case 1:
-                        calc.set(add(Integer.parseInt(textField1.getText()), Integer.parseInt(textField2.getText())));
-                        label3.setText("" + calc);
+                        calc.set(add(Double.parseDouble(textField1.getText()), Double.parseDouble(textField2.getText())));
+                        if (calc.get() % 1 > 0) {
+                            label3.setText("" + calc);
+                            break;
+                        }
+                        else
+                            label3.setText("" + calc.get().longValue());
                         break;
                     case 2:
-                        calc.set(sub(Integer.parseInt(textField1.getText()), Integer.parseInt(textField2.getText())));
-                        label3.setText("" + calc);
+                        calc.set(sub(Double.parseDouble(textField1.getText()), Double.parseDouble(textField2.getText())));
+                        if (calc.get() % 1 > 0) {
+                            label3.setText("" + calc);
+                            break;
+                        }
+                        else
+                            label3.setText("" + calc.get().longValue());
                         break;
                     case 3:
-                        calc.set(div(Integer.parseInt(textField1.getText()), Integer.parseInt(textField2.getText())));
-                        label3.setText("" + calc);
+                        calc.set(div(Double.parseDouble(textField1.getText()), Double.parseDouble(textField2.getText())));
+                        if (calc.get() % 1 > 0) {
+                            label3.setText("" + calc);
+                            break;
+                        }
+                        else
+                            label3.setText("" + calc.get().longValue());
                         break;
                     case 4:
-                        calc.set(mul(Integer.parseInt(textField1.getText()), Integer.parseInt(textField2.getText())));
-                        label3.setText("" + calc);
+                        calc.set(mul(Double.parseDouble(textField1.getText()), Double.parseDouble(textField2.getText())));
+                        if (calc.get() % 1 > 0) {
+                            label3.setText("" + calc);
+                            break;
+                        }
+                        else
+                            label3.setText("" + calc.get().longValue());
                         break;
                 }
             }
@@ -102,25 +123,25 @@ public class Calculator extends Application {
         Application.launch(args);
     }
 
-    public static int add(int first, int second) {
+    private static double add(double first, double second) {
         return first + second;
     }
 
-    public static int sub(int first, int second) {
+    private static double sub(double first, double second) {
         return first - second;
     }
 
-    public static int div(int first, int second) {
+    private static double div(double first, double second) {
         return first / second;
     }
 
-    public static int mul(int first, int second) {
+    private static double mul(double first, double second) {
         return first * second;
     }
 
-    public static boolean isNumeric(String strNum) {
+    private static boolean isNumeric(String strNum) {
         try {
-            int i = Integer.parseInt(strNum);
+            double d = Double.parseDouble(strNum);
         } catch (NumberFormatException | NullPointerException nfe) {
             return false;
         }
