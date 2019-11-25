@@ -14,6 +14,8 @@ import java.util.concurrent.atomic.AtomicReference;
 
 
 public class Calculator extends Application {
+    private static AtomicInteger chosen = new AtomicInteger(1);
+    private static Label label2 = new Label("Second number");
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -23,43 +25,55 @@ public class Calculator extends Application {
 
         TextField textField1 = new TextField();
 
-        Label label2 = new Label("Second number");
         label2.setStyle("-fx-padding: 10 0 0 0;");
 
         TextField textField2 = new TextField();
 
         Label label3 = new Label("Result here");
-        label3.setStyle("-fx-padding: 10 0 0 0; -fx-font-size: 16pt;");
+        label3.setStyle("-fx-padding: 30 0 0 0; -fx-font-size: 16pt;");
         AtomicReference<Double> calc = new AtomicReference<>();
-        AtomicInteger chosen = new AtomicInteger();
 
-        chosen.set(1);
-        Label labelChosen = new Label("Addition is chosen.");
+        Label labelChosen = new Label("Addition is selected.");
         labelChosen.setStyle("-fx-padding: 20 0 10 0; -fx-font-size: 16pt;");
 
         Button add = new Button("Add");
         add.setOnAction(actionEvent -> {
             chosen.set(1);
-            labelChosen.setText("Addition is chosen.");
+            changeSecondText();
+            labelChosen.setText("Addition is selected.");
         });
         Button sub = new Button("Subtract");
         sub.setOnAction(actionEvent -> {
             chosen.set(2);
-            labelChosen.setText("Subtract is chosen.");
+            changeSecondText();
+            labelChosen.setText("Subtract is selected.");
         });
         Button div = new Button("Divide");
         div.setOnAction(actionEvent -> {
             chosen.set(3);
-            labelChosen.setText("Divide is chosen.");
+            changeSecondText();
+            labelChosen.setText("Divide is selected.");
         });
         Button mul = new Button("Multiply");
         mul.setOnAction(actionEvent -> {
             chosen.set(4);
-            labelChosen.setText("Multiply is chosen.");
+            changeSecondText();
+            labelChosen.setText("Multiply is selected.");
+        });
+        Button pow = new Button("Power to");
+        pow.setOnAction(actionEvent -> {
+            chosen.set(5);
+            changeSecondText();
+            labelChosen.setText("Power to is selected.");
+        });
+        Button sqr = new Button("Nth root of");
+        sqr.setOnAction(actionEvent -> {
+            chosen.set(6);
+            changeSecondText();
+            labelChosen.setText("Nth root of is selected.");
         });
 
-
-        HBox hbox = new HBox(add, sub, div, mul);
+        HBox hbox = new HBox(add, sub, div, mul, pow, sqr);
 
         Button button = new Button("Calculate");
         button.setOnAction(actionEvent ->  {
@@ -101,6 +115,24 @@ public class Calculator extends Application {
                         else
                             label3.setText("" + calc.get().longValue());
                         break;
+                    case 5:
+                        calc.set(pow(Double.parseDouble(textField1.getText()), Double.parseDouble(textField2.getText())));
+                        if (calc.get() % 1 > 0) {
+                            label3.setText("" + calc);
+                            break;
+                        }
+                        else
+                            label3.setText("" + calc.get().longValue());
+                        break;
+                    case 6:
+                        calc.set(sqr(Double.parseDouble(textField1.getText()), Double.parseDouble(textField2.getText())));
+                        if (calc.get() % 1 > 0) {
+                            label3.setText("" + calc);
+                            break;
+                        }
+                        else
+                            label3.setText("" + calc.get().longValue());
+                        break;
                 }
             }
             else
@@ -113,7 +145,7 @@ public class Calculator extends Application {
         VBox vBox = new VBox(hbox, labelChosen, label1, textField1, label2, textField2, button, label3);
 
 
-        Scene scene = new Scene(vBox, 400, 250);
+        Scene scene = new Scene(vBox, 600, 350);
         primaryStage.setScene(scene);
 
         primaryStage.show();
@@ -139,6 +171,14 @@ public class Calculator extends Application {
         return first * second;
     }
 
+    private static double pow(double first, double pow) {
+        return Math.pow(first, pow);
+    }
+
+    private static double sqr(double first, double nth) {
+        return Math.pow(first, (1/nth));
+    }
+
     private static boolean isNumeric(String strNum) {
         try {
             double d = Double.parseDouble(strNum);
@@ -146,5 +186,14 @@ public class Calculator extends Application {
             return false;
         }
         return true;
+    }
+
+    private static void changeSecondText() {
+        if (chosen.get() == 5)
+            label2.setText("To the power of");
+        else if (chosen.get() == 6)
+            label2.setText("Nth root of");
+        else
+            label2.setText("Second number");
     }
 }
