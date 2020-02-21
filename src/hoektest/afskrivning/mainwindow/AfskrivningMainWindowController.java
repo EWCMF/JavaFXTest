@@ -22,7 +22,7 @@ public class AfskrivningMainWindowController {
     public void nyAfskrivning() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../subwindow/AfskrivningSubWindow.fxml"));
         Stage stage = (Stage) buttonNyAfskrivning.getScene().getWindow();
-        Scene newScene = new Scene(root, 640, 400);
+        Scene newScene = new Scene(root, 640, 550);
         stage.setScene(newScene);
     }
 }
