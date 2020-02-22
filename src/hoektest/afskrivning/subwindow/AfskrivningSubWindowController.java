@@ -17,9 +17,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class AfskrivningSubWindowController {
+    private NodeController nodeController = new NodeController();
 
     @FXML
-    private Button buttonTilbage;
+    private Button buttonTilbage, buttonUdregn;
 
     @FXML
     private ChoiceBox<String> choiceBoxMetode;
@@ -65,8 +66,60 @@ public class AfskrivningSubWindowController {
     }
 
     private void loadAllNodes() throws IOException {
-        node1 = FXMLLoader.load(getClass().getResource("../subwindow/LinearMetodeNode.fxml"));
-        node2 = FXMLLoader.load(getClass().getResource("../subwindow/SaldoMetodeNode.fxml"));
-        node3 = FXMLLoader.load(getClass().getResource("../subwindow/StraksAfskrivningNode.fxml"));
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("../subwindow/LinearMetodeNode.fxml"));
+        loader1.setController(nodeController);
+        node1 = loader1.load();
+
+        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("../subwindow/SaldoMetodeNode.fxml"));
+        loader2.setController(nodeController);
+        node2 = loader2.load();
+
+        FXMLLoader loader3 = new FXMLLoader(getClass().getResource("../subwindow/StraksAfskrivningNode.fxml"));
+        loader3.setController(nodeController);
+        node3 = loader3.load();
     }
+
+    @FXML
+    private void calculate() {
+        if (choiceBoxMetode.getValue() != null) {
+            switch (choiceBoxMetode.getValue()) {
+                case "Lineær metode":
+                    linearMetode();
+                    break;
+                case "Saldometode":
+                    saldoMetode();
+                    break;
+                case "Straksafskrivning":
+                    straksMetode();
+                    break;
+            }
+        }
+        else {
+            System.out.println("Vælg en metode først.");
+        }
+    }
+
+    private void linearMetode() {
+        String afskrivning = "Årlig afskrivning = ";
+        double anskaf = nodeController.getTfAnskaf();
+        double skrap = nodeController.getTfSkrap();
+        double brugstid = nodeController.getTfBrugs();
+        double udregning = (anskaf - skrap) / brugstid;
+        System.out.println(afskrivning + udregning);
+    }
+    private void saldoMetode() {
+        String afskrivning = "Årlig afskrivning = ";
+        double nutids = nodeController.getTfNutids();
+        double procent = nodeController.getTfProcent();
+        double udregning = (nutids * procent) / 100;
+        System.out.println(afskrivning + udregning);
+
+    }
+    private void straksMetode() {
+        String afskrivning = "Årlig afskrivning = ";
+        double straks = nodeController.getTfStraks();
+        System.out.println(afskrivning + straks);
+    }
+
+
 }
