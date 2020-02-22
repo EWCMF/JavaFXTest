@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -21,6 +22,9 @@ public class AfskrivningSubWindowController {
 
     @FXML
     private Button buttonTilbage, buttonUdregn;
+
+    @FXML
+    private TextField tfNavn;
 
     @FXML
     private ChoiceBox<String> choiceBoxMetode;
