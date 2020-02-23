@@ -1,4 +1,4 @@
-package hoektest.afskrivning.subwindow;
+package hoektest.afskrivning.view.subwindow;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class AfskrivningSubWindowController {
+    private Scene previousScene;
     private NodeController nodeController = new NodeController();
 
     @FXML
@@ -63,10 +64,10 @@ public class AfskrivningSubWindowController {
 
     @FXML
     private void tilbage() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../mainwindow/AfskrivningMainWindow.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("../mainwindow/AfskrivningMainWindow.fxml"));
         Stage stage = (Stage) buttonTilbage.getScene().getWindow();
-        Scene newScene = new Scene(root, 270, 400);
-        stage.setScene(newScene);
+//        Scene newScene = new Scene(root, 270, 400);
+        stage.setScene(previousScene);
     }
 
     private void loadAllNodes() throws IOException {
@@ -125,5 +126,7 @@ public class AfskrivningSubWindowController {
         System.out.println(afskrivning + straks);
     }
 
-
+    public void setPreviousScene(Scene previousScene) {
+        this.previousScene = previousScene;
+    }
 }

@@ -1,4 +1,4 @@
-package hoektest.afskrivning.subwindow;
+package hoektest.afskrivning.view.subwindow;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
