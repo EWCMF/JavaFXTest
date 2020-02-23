@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 public class List {
     ObservableList<Model> models;
 
+    double kumuleretAfskrivinger;
+
     public List() {
         models = FXCollections.observableArrayList();
     }
@@ -19,6 +21,17 @@ public class List {
         model.setBeregningstal(beregningstal);
         model.setAfskrivningsvaerdi(afskrivningsvaerdi);
         models.add(model);
+        updateKumuleret();
     }
 
+    public void updateKumuleret() {
+        kumuleretAfskrivinger = 0;
+        for (Model model : models) {
+            kumuleretAfskrivinger += model.getAfskrivningsvaerdi();
+        }
+    }
+
+    public double getKumuleretAfskrivinger() {
+        return kumuleretAfskrivinger;
+    }
 }

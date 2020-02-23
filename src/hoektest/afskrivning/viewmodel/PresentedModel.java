@@ -2,7 +2,7 @@ package hoektest.afskrivning.viewmodel;
 
 public class PresentedModel {
     private String navn;
-    private Double afskrivning;
+    private String afskrivning;
 
     public String getNavn() {
         return navn;
@@ -12,11 +12,11 @@ public class PresentedModel {
         this.navn = navn;
     }
 
-    public double getAfskrivning() {
+    public String getAfskrivning() {
         return afskrivning;
     }
 
-    public void setAfskrivning(Double afskrivning) {
+    public void setAfskrivning(String afskrivning) {
         this.afskrivning = afskrivning;
     }
 }

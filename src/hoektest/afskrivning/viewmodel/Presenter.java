@@ -18,24 +18,22 @@ public class Presenter {
         this.list = list;
     }
 
-//    private void observeModel() {
-//        list.addPropertyChangeListener(new PropertyChangeListener() {
-//            @Override
-//            public void propertyChange(PropertyChangeEvent propertyChangeEvent) {
-//                List newValues = (List) propertyChangeEvent.getNewValue();
-//            }
-//        });
-//    }
-
     public void addModel(String navn, double[] beregningstal, double afskrivningsvaerdi) {
         list.addModel(navn, beregningstal, afskrivningsvaerdi);
         PresentedModel presentedModel = new PresentedModel();
         presentedModel.setNavn(navn);
-        presentedModel.setAfskrivning(afskrivningsvaerdi);
+        String formatted = String.format("%,.2f", afskrivningsvaerdi);
+        presentedModel.setAfskrivning(formatted + " kr.");
         presentedList.add(presentedModel);
     }
 
     public ObservableList<PresentedModel> getPresentedList() {
         return presentedList;
+    }
+
+    public String getKumuleret() {
+        double kumuleret = list.getKumuleretAfskrivinger();
+        String formatted = String.format("%,.2f", kumuleret);
+        return formatted + " kr.";
     }
 }

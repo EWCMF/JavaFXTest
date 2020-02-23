@@ -13,6 +13,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("view/mainwindow/AfskrivningMainWindow.fxml"));
         stage.setTitle("Afskrivning");
         stage.setScene(new Scene(root, 270, 400));
+        stage.setResizable(false);
         stage.show();
     }
 }

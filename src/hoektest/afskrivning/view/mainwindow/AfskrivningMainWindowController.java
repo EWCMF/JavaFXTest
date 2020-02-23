@@ -30,7 +30,7 @@ public class AfskrivningMainWindowController {
     private TableColumn<PresentedModel, String> tcNavn;
 
     @FXML
-    private TableColumn<PresentedModel, Double> tcTal;
+    private TableColumn<PresentedModel, String> tcTal;
 
     @FXML
     private Label labelResultat;
@@ -46,11 +46,7 @@ public class AfskrivningMainWindowController {
                 public void onChanged(Change<? extends PresentedModel> change) {
                     if (tvAfskrivninger.getItems().size() > 0) {
                         labelResultat.setVisible(true);
-                        double resultat = 0;
-                        for (int i = 0; i < tvAfskrivninger.getItems().size(); i++) {
-                            resultat += tcTal.getCellObservableValue(i).getValue();
-                        }
-                        labelResultat.setText(resultat + "");
+                        labelResultat.setText(presenter.getKumuleret());
                     }
                     else {
                         labelResultat.setVisible(false);
