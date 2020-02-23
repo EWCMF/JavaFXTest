@@ -27,8 +27,12 @@ public class Presenter {
 //        });
 //    }
 
-    public void addModel(Model model) {
-        list.addModel(model);
+    public void addModel(String navn, double[] beregningstal, double afskrivningsvaerdi) {
+        list.addModel(navn, beregningstal, afskrivningsvaerdi);
+        PresentedModel presentedModel = new PresentedModel();
+        presentedModel.setNavn(navn);
+        presentedModel.setAfskrivning(afskrivningsvaerdi);
+        presentedList.add(presentedModel);
     }
 
     public ObservableList<PresentedModel> getPresentedList() {

@@ -9,12 +9,12 @@
       <children>
             <TableView fx:id="tvAfskrivninger" layoutX="36.0" layoutY="96.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="96.0">
               <columns>
-                <TableColumn prefWidth="75.0" resizable="false" text="Navn" />
-                <TableColumn prefWidth="75.0" text="Tal i kr." />
+                <TableColumn fx:id="tcNavn" prefWidth="75.0" resizable="false" text="Navn" />
+                <TableColumn fx:id="tcTal" prefWidth="75.0" text="Tal i kr." />
               </columns>
             </TableView>
             <Label layoutX="52.0" layoutY="311.0" text="I alt:" AnchorPane.leftAnchor="48.0" />
-            <Label layoutX="120.0" layoutY="311.0" prefHeight="18.0" prefWidth="96.0" text="resultat" AnchorPane.leftAnchor="120.0" />
+            <Label fx:id="labelResultat" layoutX="120.0" layoutY="311.0" prefHeight="18.0" prefWidth="96.0" text="resultat" AnchorPane.leftAnchor="120.0" />
             <Label layoutX="44.0" layoutY="72.0" text="Askrivninger" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="72.0" />
             <Button fx:id="buttonNyAfskrivning" layoutX="22.0" layoutY="21.0" mnemonicParsing="false" onAction="#nyAfskrivning" text="Ny afskrivning" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="22.0" />
       </children>

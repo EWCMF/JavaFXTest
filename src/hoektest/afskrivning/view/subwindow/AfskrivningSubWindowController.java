@@ -1,5 +1,6 @@
 package hoektest.afskrivning.view.subwindow;
 
+import hoektest.afskrivning.viewmodel.Presenter;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -19,6 +20,7 @@ import java.io.IOException;
 
 public class AfskrivningSubWindowController {
     private Scene previousScene;
+    private Presenter presenter;
     private NodeController nodeController = new NodeController();
 
     @FXML
@@ -63,10 +65,8 @@ public class AfskrivningSubWindowController {
     }
 
     @FXML
-    private void tilbage() throws IOException {
-//        Parent root = FXMLLoader.load(getClass().getResource("../mainwindow/AfskrivningMainWindow.fxml"));
+    private void tilbage() {
         Stage stage = (Stage) buttonTilbage.getScene().getWindow();
-//        Scene newScene = new Scene(root, 270, 400);
         stage.setScene(previousScene);
     }
 
@@ -106,27 +106,42 @@ public class AfskrivningSubWindowController {
 
     private void linearMetode() {
         String afskrivning = "Årlig afskrivning = ";
+        String navn = tfNavn.getText();
         double anskaf = nodeController.getTfAnskaf();
         double skrap = nodeController.getTfSkrap();
         double brugstid = nodeController.getTfBrugs();
         double udregning = (anskaf - skrap) / brugstid;
         System.out.println(afskrivning + udregning);
+
+        presenter.addModel(navn, new double[]{anskaf, skrap, brugstid}, udregning);
+        tilbage();
     }
     private void saldoMetode() {
         String afskrivning = "Årlig afskrivning = ";
+        String navn = tfNavn.getText();
         double nutids = nodeController.getTfNutids();
         double procent = nodeController.getTfProcent();
         double udregning = (nutids * procent) / 100;
         System.out.println(afskrivning + udregning);
 
+        presenter.addModel(navn, new double[]{nutids, procent}, udregning);
+        tilbage();
     }
     private void straksMetode() {
         String afskrivning = "Årlig afskrivning = ";
+        String navn = tfNavn.getText();
         double straks = nodeController.getTfStraks();
         System.out.println(afskrivning + straks);
+
+        presenter.addModel(navn, new double[]{straks}, straks);
+        tilbage();
     }
 
     public void setPreviousScene(Scene previousScene) {
         this.previousScene = previousScene;
+    }
+
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
     }
 }

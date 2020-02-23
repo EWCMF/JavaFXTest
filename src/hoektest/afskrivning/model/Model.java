@@ -1,9 +1,14 @@
 package hoektest.afskrivning.model;
 
 public class Model {
+    private int id;
     private String navn;
     private double[] beregningstal;
     private double afskrivningsvaerdi;
+
+    public int getId() {
+        return id;
+    }
 
     public String getNavn() {
         return navn;
