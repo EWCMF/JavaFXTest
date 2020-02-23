@@ -12,7 +12,10 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
             <TableView fx:id="tvAfskrivninger" layoutX="36.0" layoutY="96.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="96.0">
-              <columns>
+                <placeholder>
+                    <Label text="Ingen afskrivninger at vise."/>
+                </placeholder>
+                <columns>
                 <TableColumn fx:id="tcNavn" prefWidth="104.0" resizable="false" text="Navn" />
                 <TableColumn fx:id="tcTal" prefWidth="110.4000244140625" resizable="false" text="Beløb" />
               </columns>
