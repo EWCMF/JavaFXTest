@@ -29,7 +29,7 @@ public class MainWindowController {
         buttonBeregnOmsaetning.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                nyOmsaetning();
             }
         });
 
@@ -37,7 +37,25 @@ public class MainWindowController {
     }
 
     public void nyAfskrivning() {
+        if (apPaneHolder.getChildren().size() != 0) {
+            apPaneHolder.getChildren().removeAll();
+        }
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AfskrivningPane.fxml"));
+
+        Node node = null;
+        try {
+            node = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        apPaneHolder.getChildren().add(node);
+    }
+
+    public void nyOmsaetning() {
+        if (apPaneHolder.getChildren().size() != 0) {
+            apPaneHolder.getChildren().removeAll();
+        }
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OmsaetningPane.fxml"));
 
         Node node = null;
         try {
