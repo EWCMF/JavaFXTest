@@ -1,35 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="858.0" prefWidth="1022.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hoektest.testui.view.AfskrivningPaneController">
+<AnchorPane prefHeight="720.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hoektest.testui.view.AfskrivningPaneController">
    <children>
-      <Button layoutX="24.0" layoutY="23.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="176.0" text="Lineær metode" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="32.0" />
-      <Button layoutX="38.0" layoutY="109.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="176.0" text="Saldometode" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="80.0" />
-      <Button layoutX="32.0" layoutY="158.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="176.0" text="Straksafskrivning" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="128.0" />
-      <Line endX="100.0" endY="858.0" layoutX="361.0" layoutY="227.0" startX="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="0.0" />
-      <Circle fill="#8f8f8f" layoutX="232.0" layoutY="48.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
-      <Text fx:id="textHelp1" layoutX="218.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" wrappingWidth="28.0">
+      <Label layoutX="56.0" layoutY="26.0" text="Beregn afskrivning med:" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="16.0">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font size="18.0" />
          </font>
-      </Text>
+      </Label>
+      <Button fx:id="buttonLinear" layoutX="24.0" layoutY="23.0" mnemonicParsing="false" onAction="#linearMetodeValgt" prefHeight="32.0" prefWidth="176.0" text="Lineær metode" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="80.0" />
+      <Button fx:id="buttonSaldo" layoutX="32.0" layoutY="109.0" mnemonicParsing="false" onAction="#saldoMetodeValgt" prefHeight="32.0" prefWidth="176.0" text="Saldometode" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="128.0" />
+      <Button fx:id="buttonStraks" layoutX="32.0" layoutY="160.0" mnemonicParsing="false" onAction="#straksMetodeValgt" prefHeight="32.0" prefWidth="176.0" text="Straksafskrivning" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="176.0" />
+      <Line endX="100.0" endY="720.0" layoutX="361.0" layoutY="227.0" startX="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="0.0" />
       <Circle fill="#8f8f8f" layoutX="232.0" layoutY="96.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
-      <Text fx:id="textHelp2" layoutX="218.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" wrappingWidth="28.0">
+      <Text fx:id="textHelp1" layoutX="218.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" wrappingWidth="28.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Text>
       <Circle fill="#8f8f8f" layoutX="232.0" layoutY="144.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
-      <Text fx:id="textHelp3" layoutX="218.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" wrappingWidth="28.0">
+      <Text fx:id="textHelp2" layoutX="218.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" wrappingWidth="28.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Text>
+      <Circle fill="#8f8f8f" layoutX="232.0" layoutY="192.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+      <Text fx:id="textHelp3" layoutX="218.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" wrappingWidth="28.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <AnchorPane fx:id="apMetodeHolder" layoutX="256.0" prefWidth="389.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

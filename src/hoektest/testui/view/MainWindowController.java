@@ -37,9 +37,6 @@ public class MainWindowController {
     }
 
     public void nyAfskrivning() {
-        if (apPaneHolder.getChildren().size() != 0) {
-            apPaneHolder.getChildren().removeAll();
-        }
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AfskrivningPane.fxml"));
 
         Node node = null;
@@ -48,13 +45,10 @@ public class MainWindowController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        apPaneHolder.getChildren().add(node);
+        apPaneHolder.getChildren().setAll(node);
     }
 
     public void nyOmsaetning() {
-        if (apPaneHolder.getChildren().size() != 0) {
-            apPaneHolder.getChildren().removeAll();
-        }
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OmsaetningPane.fxml"));
 
         Node node = null;
@@ -63,6 +57,6 @@ public class MainWindowController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        apPaneHolder.getChildren().add(node);
+        apPaneHolder.getChildren().setAll(node);
     }
 }
